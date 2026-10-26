@@ -1,6 +1,10 @@
+"use client";
+
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import NextLink from "next/link";
 import { colors } from "@/theme/colors";
 import AppIcon from "@/components/ui/AppIcon";
 import type { IconName } from "@/components/ui/AppIcon";
@@ -9,10 +13,25 @@ type LocationCardProps = {
   image: string;
   name: string;
   icon: string;
+  slug: string;
 };
 
-export default function LocationCard({ image, name, icon }: LocationCardProps) {
+export default function LocationCard({ image, name, icon, slug }: LocationCardProps) {
   return (
+    <Link
+      component={NextLink}
+      href={`/locations/${slug}`}
+      aria-label={`${name} BeautyPod page`}
+      sx={{
+        display: "block",
+        color: "inherit",
+        borderRadius: "9px",
+        "&:focus-visible": {
+          outline: `2px solid ${colors.green}`,
+          outlineOffset: 3,
+        },
+      }}
+    >
     <Box
       component="article"
       sx={{
@@ -49,5 +68,6 @@ export default function LocationCard({ image, name, icon }: LocationCardProps) {
         </Typography>
       </Box>
     </Box>
+    </Link>
   );
 }

@@ -3,7 +3,9 @@ import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined";
 import FlightTakeoffOutlinedIcon from "@mui/icons-material/FlightTakeoffOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
@@ -20,6 +22,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import TrackChangesOutlinedIcon from "@mui/icons-material/TrackChangesOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
@@ -49,6 +52,9 @@ const iconMap = {
   clock: AccessTimeOutlinedIcon,
   support: SettingsOutlinedIcon,
   gem: DiamondOutlinedIcon,
+  heart: FavoriteBorderOutlinedIcon,
+  gift: CardGiftcardOutlinedIcon,
+  star: StarBorderOutlinedIcon,
   cart: ShoppingCartOutlinedIcon,
   rupee: CurrencyRupeeOutlinedIcon,
   managed: SettingsOutlinedIcon,

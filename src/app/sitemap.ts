@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/content";
+import { locations, site } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/privacy", "/terms", "/cookies"];
+  const pages = ["", "/privacy", "/terms", "/cookies", ...locations.map((location) => `/locations/${location.slug}`)];
   return pages.map((path) => ({
     url: `${site.url}${path}`,
     lastModified: new Date("2026-09-16"),

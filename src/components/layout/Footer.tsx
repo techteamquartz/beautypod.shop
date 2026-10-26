@@ -17,6 +17,7 @@ const quickLinks = [
   { label: "For Brands", href: "/#brands" },
   { label: "Brands", href: "/#brand-partners" },
   { label: "Case Studies", href: "/#case-studies" },
+  { label: "Locations", href: "/#locations" },
 ];
 
 const aboutLinks = [

@@ -1,13 +1,19 @@
 "use client";
 
+import { useState } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import { navLinks } from "@/lib/content";
+import NextLink from "next/link";
+import { locations, navLinks } from "@/lib/content";
 import { colors } from "@/theme/colors";
+import AppIcon from "@/components/ui/AppIcon";
+import type { IconName } from "@/components/ui/AppIcon";
 import { useDemoDialog } from "@/components/providers/DemoDialogProvider";
 
-const compactHidden = new Set(["Locations", "How It Works", "Case Studies"]);
+const compactHidden = new Set(["How It Works", "Case Studies"]);
 
 const navItemSx = {
   fontSize: { md: 12, lg: 14 },
@@ -38,6 +44,7 @@ const navItemSx = {
 
 export default function DesktopNav() {
   const { openDemo } = useDemoDialog();
+  const [locationsOpen, setLocationsOpen] = useState(false);
 
   return (
     <Stack
@@ -52,20 +59,94 @@ export default function DesktopNav() {
         pr: { md: 0.5, lg: 1 },
       }}
     >
-      {navLinks.map((item) => (
-        <Link
-          key={item.label}
-          href={item.href}
-          sx={{
-            ...navItemSx,
-            display: compactHidden.has(item.label)
-              ? { md: "none", xl: "inline" }
-              : "inline",
-          }}
-        >
-          {item.label}
-        </Link>
-      ))}
+      {navLinks.map((item) =>
+        item.label === "Locations" ? (
+          <Box
+            key={item.label}
+            onMouseEnter={() => setLocationsOpen(true)}
+            onMouseLeave={() => setLocationsOpen(false)}
+            onFocus={() => setLocationsOpen(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                setLocationsOpen(false);
+              }
+            }}
+            sx={{
+              position: "relative",
+              display: compactHidden.has(item.label) ? { md: "none", xl: "block" } : "block",
+            }}
+          >
+            <Link
+              href={item.href}
+              aria-expanded={locationsOpen}
+              aria-haspopup="true"
+              sx={{ ...navItemSx, display: "inline-flex", alignItems: "center", gap: 0.2 }}
+            >
+              {item.label}
+              <KeyboardArrowDownIcon sx={{ fontSize: 18 }} />
+            </Link>
+            <Box
+              sx={{
+                display: locationsOpen ? "grid" : "none",
+                position: "absolute",
+                top: "100%",
+                right: 0,
+                zIndex: 20,
+                pt: 1.4,
+                minWidth: 420,
+              }}
+            >
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 0.4,
+                  p: 1.2,
+                  bgcolor: "#fff",
+                  color: colors.text,
+                  borderRadius: 2,
+                  boxShadow: "0 18px 40px rgba(13, 68, 54, 0.18)",
+                }}
+              >
+                {locations.map((location) => (
+                  <Link
+                    key={location.slug}
+                    component={NextLink}
+                    href={`/locations/${location.slug}`}
+                    onClick={() => setLocationsOpen(false)}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1,
+                      px: 1.1,
+                      py: 1,
+                      borderRadius: 1.5,
+                      color: colors.text,
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      "&:hover": { bgcolor: colors.soft, color: colors.green },
+                    }}
+                  >
+                    <AppIcon name={location.icon as IconName} sx={{ fontSize: 18, color: colors.green }} />
+                    {location.name}
+                  </Link>
+                ))}
+              </Box>
+            </Box>
+          </Box>
+        ) : (
+          <Link
+            key={item.label}
+            href={item.href}
+            sx={{
+              ...navItemSx,
+              display: compactHidden.has(item.label) ? { md: "none", xl: "inline" } : "inline",
+            }}
+          >
+            {item.label}
+          </Link>
+        ),
+      )}
       <Button
         onClick={openDemo}
         sx={{

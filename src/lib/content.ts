@@ -164,22 +164,24 @@ export const processSteps = [
 ] as const;
 
 export const locations = [
-  { image: "/images/airport.jpg", name: "Airports", icon: "plane" },
-  { image: "/images/mall.jpg", name: "Malls", icon: "mall" },
-  { image: "/images/hotel.jpg", name: "Hotels", icon: "hotel" },
-  { image: "/images/retail-store.jpg", name: "Retail Stores", icon: "store" },
-  { image: "/images/pharmacy.jpg", name: "Pharmacies", icon: "pharmacy" },
+  { image: "/images/airport.jpg", name: "Airports", icon: "plane", slug: "airports" },
+  { image: "/images/mall.jpg", name: "Malls", icon: "mall", slug: "malls" },
+  { image: "/images/hotel.jpg", name: "Hotels", icon: "hotel", slug: "hotels" },
+  { image: "/images/retail-store.jpg", name: "Retail Stores", icon: "store", slug: "retail-stores" },
+  { image: "/images/pharmacy.jpg", name: "Pharmacies", icon: "pharmacy", slug: "pharmacies" },
   {
     image: "/images/corporate.jpg",
     name: "Corporate Campuses",
     icon: "corporate",
+    slug: "corporate-campuses",
   },
   {
     image: "/images/gym.jpg",
     name: "Gyms & Wellness Centres",
     icon: "gym",
+    slug: "gyms-wellness",
   },
-  { image: "/images/university.jpg", name: "Universities", icon: "university" },
+  { image: "/images/university.jpg", name: "Universities", icon: "university", slug: "universities" },
 ] as const;
 
 export const benefits = [
